@@ -26,3 +26,30 @@ He thought it'll be a good idea to convert this to Object Oriented Programming. 
 However, his trainer told him that what he did is not Object Oriented programming and asked Shivam to try again. 
 - Try to articulate problems with Shivam's OOP solution. (Write it somewhere and share it with your trainer)
 - Fork the project and fix the design related problem with Shivam's OOP solution. Share that with your trainer too.
+
+
+---
+
+
+#### Articulation
+- The fact that some data and some behaviours which interact with that data are in two different classes means there is little to no encapsulation happening here.
+- Hence, lets try to encapsulate the behaviours from DistanceAndDirectionCalculator class with the data from Point Class.
+- Here, the getters and setters are merely acting as data modifiers and not really behaviours of the 'Point', hence it isn't really object oriented.
+- Also, for the point of this exercise, we only want to know distance and direction, so having getX and getY as public functions ruins the concept of data hiding here.
+    - The only public functions of the point class should be distance() and direction().
+
+
+- As far as I can think of, there are two ways of implementing this. 
+    - One is by directly ditto-ing the functions that were originally there in DistanceAndDirectionCalculator and just accessing the variables privately through the class.
+    - The above method doesn't really make sense. Why would each Point need to know the distance for any two arbitrary points?
+    - Instead let us model the functions as taking a single parameter, which is the destination point. Each point need only calculate the distance from itself to any other point.
+
+#### Changes made
+- Added distance and direction to Point class
+- distance(p) is the distance from the source point to the point 'p'
+- direction(p) is the direction of the source point w.r.t. the point 'p'
+- Updated tests accordingly
+
+#### Learnings 
+- Initially, I thought this wouldn't work and it would still require getters to access the destination object's private variables.
+- When I tried coding it, I found out that access modifiers are not really object-level, they are class-level. 
